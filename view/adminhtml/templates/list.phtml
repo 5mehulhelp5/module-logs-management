@@ -1,1 +1,14 @@
-<b>Hello World</b>
+<?php
+/** @var $block /Magento/Framework/View/Element/Template */
+/** @var $viewModel /NetBytes/LogsExplorer/ViewModel/LogsTree */
+$viewModel = $block->getViewModel();
+$tree = $viewModel->getTree();
+?>
+
+<div id="category-tree"
+     data-mage-init='{
+         "custom-tree": {
+             "treeData": <?= $tree ?>
+         }
+     }'>
+</div>

@@ -4,7 +4,11 @@
     <update handle="indexer_indexer_list_grid"/>
     <body>
         <referenceContainer name="content">
-            <block name="adminhtml.logs.list" template="NetBytes_LogsExplorer::list.phtml"/>
+            <block name="adminhtml.logs.list" template="NetBytes_LogsExplorer::list.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">NetBytes\LogsExplorer\ViewModel\LogsTree</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>
