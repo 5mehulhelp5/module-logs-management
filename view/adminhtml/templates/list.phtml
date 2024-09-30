@@ -4,11 +4,39 @@
 $viewModel = $block->getViewModel();
 $tree = $viewModel->getTree();
 ?>
-
-<div id="category-tree"
-     data-mage-init='{
-         "custom-tree": {
-             "treeData": <?= $tree ?>
-         }
-     }'>
+<div class="logs-management">
+    <table class="data-grid" data-role="data-grid">
+        <thead>
+        <tr>
+            <th class="data-grid-th no-link"><?= __('Tree') ?></th>
+            <th class="data-grid-th no-link"><?= __('Log View') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <div class="logs-tree" id="category-tree"
+                     data-mage-init='{
+                             "logs-tree": {
+                                "treeData": <?= $tree ?>
+                             }
+                         }'>
+                </div>
+            </td>
+            <td>
+                <pre id="logs-view">
+                </pre>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "log-view" : {}
+        }
+    }
+</script>
+
