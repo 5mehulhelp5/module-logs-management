@@ -59,4 +59,3 @@ readonly class LogsTree implements ArgumentInterface
         return $this->fileIo->ls(3);
     }
 }
-

@@ -15,7 +15,16 @@ define([
                 },
                 showLoader: true,
                 success: function (response) {
-                    $('#log-content').empty().append(response.content);
+                    const note = $('div.note');
+                    const content = $('#log-content');
+
+                    if (response.error) {
+                        content.empty().css('display', 'none');
+                        note.css('display', 'flex').children('span').empty().append(response.message);
+                    } else {
+                        note.css('display', 'none').children('span').empty();
+                        content.empty().append(response.content).css('display', 'block');
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.error($.mage.__('Error while loading: '), textStatus, errorThrown);

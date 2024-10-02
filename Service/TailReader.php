@@ -12,6 +12,8 @@ use Magento\Framework\Filesystem\Driver\File;
 
 class TailReader implements ContentReaderInterface
 {
+    const string LINES_NUMBER_CONFIG = 'system/logs_management/lines_number';
+
     /**
      * @param Filesystem $filesystem
      * @param File $fileDriver
@@ -33,7 +35,7 @@ class TailReader implements ContentReaderInterface
     public function read(string $path): string
     {
         if (!$this->validateExtension($path)) {
-            throw new FileSystemException(__('Invalid extension for file: %s', $path));
+            throw new FileSystemException(__('Invalid file extension.'));
         }
 
         $sanitizedPath = $this->sanitizePath($path);
@@ -41,14 +43,14 @@ class TailReader implements ContentReaderInterface
         $filePath = $logDir->getAbsolutePath($sanitizedPath);
 
         if (!$this->fileDriver->isExists($filePath)) {
-            throw new FileSystemException(__('File not found: %s', $filePath));
+            throw new FileSystemException(__('The file was not found.'));
         }
 
         $command = sprintf('tail -n %d %s', $this->getNumberOfLines(), escapeshellarg($filePath));
         $output = shell_exec($command);
 
         if (!is_string($output)) {
-            throw new FileSystemException(__('Failed to read file: %s', $filePath));
+            throw new FileSystemException(__('The file could not be read.'));
         }
 
         return $output;
@@ -93,6 +95,6 @@ class TailReader implements ContentReaderInterface
      */
     protected function getNumberOfLines(): int
     {
-        return (int)$this->config->getValue('system/logs_management/lines_number');
+        return (int)$this->config->getValue(self::LINES_NUMBER_CONFIG);
     }
 }
