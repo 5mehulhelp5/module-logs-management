@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NetBytes\LogsExplorer\Controller\Adminhtml\Logs;
+namespace NetBytes\LogsManagement\Controller\Adminhtml\Logs;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -10,7 +10,7 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\FileSystemException;
-use NetBytes\LogsExplorer\Service\ContentReaderInterface;
+use NetBytes\LogsManagement\Service\ContentReaderInterface;
 
 class View extends Action implements HttpGetActionInterface
 {

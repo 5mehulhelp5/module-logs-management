@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace NetBytes\LogsExplorer\Helper;
+namespace NetBytes\LogsManagement\Helper;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem\Io\File;
-use NetBytes\LogsExplorer\Service\ContentReaderInterface;
+use NetBytes\LogsManagement\Service\ContentReaderInterface;
 
 class TreeBuilder
 {

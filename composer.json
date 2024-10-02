@@ -1,5 +1,5 @@
 {
-    "name": "netbytes/module-logs-explorer",
+    "name": "netbytes/module-logs-management",
     "description": "A module for Magento 2 that allows you to view Magento logs in the admin panel.",
     "type": "magento2-module",
     "license": [
@@ -19,7 +19,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "NetBytes\\LogsExplorer\\": ""
+            "NetBytes\\LogsManagement\\": ""
         }
     }
 }

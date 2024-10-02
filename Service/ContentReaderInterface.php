@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NetBytes\LogsExplorer\Service;
+namespace NetBytes\LogsManagement\Service;
 
 interface ContentReaderInterface
 {

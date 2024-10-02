@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NetBytes\LogsExplorer\Model\Config\Backend;
+namespace NetBytes\LogsManagement\Model\Config\Backend;
 
 use Magento\Framework\App\Config\Value;
 use Magento\Framework\Exception\LocalizedException;

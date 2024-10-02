@@ -2,6 +2,6 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="NetBytes_LogsExplorer::system_logs" title="Logs Management" translate="title" module="NetBytes_LogsExplorer" sortOrder="40" parent="Magento_Backend::system_tools" action="logs/logs/list" resource="NetBytes_LogsExplorer::index"/>
+        <add id="NetBytes_LogsManagement::system_logs" title="Logs Management" translate="title" module="NetBytes_LogsManagement" sortOrder="40" parent="Magento_Backend::system_tools" action="logs/logs/list" resource="NetBytes_LogsManagement::index"/>
     </menu>
 </config>
