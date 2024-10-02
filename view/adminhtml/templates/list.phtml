@@ -1,21 +1,21 @@
 <?php
-/** @var $block /Magento/Framework/View/Element/Template */
+/** @var $this /Magento/Framework/View/Element/Template */
 /** @var $viewModel /NetBytes/LogsExplorer/ViewModel/LogsTree */
-$viewModel = $block->getViewModel();
+$viewModel = $this->getViewModel();
 $tree = $viewModel->getTree();
 ?>
 <div class="logs-management">
     <table class="data-grid" data-role="data-grid">
         <thead>
         <tr>
-            <th class="data-grid-th no-link"><?= __('Tree') ?></th>
-            <th class="data-grid-th no-link"><?= __('Log View') ?></th>
+            <th class="data-grid-th no-link"><?= __('Directory Tree') ?></th>
+            <th class="data-grid-th no-link"><?= __('Content') ?></th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td>
-                <div class="logs-tree" id="category-tree"
+            <td class="data-grid-td">
+                <div class="logs-tree" id="directory-tree"
                      data-mage-init='{
                              "logs-tree": {
                                 "treeData": <?= $tree ?>
@@ -23,8 +23,9 @@ $tree = $viewModel->getTree();
                          }'>
                 </div>
             </td>
-            <td>
-                <pre id="logs-view">
+            <td class="data-grid-td">
+                <pre id="log-content">
+                    <?= __('Please select a file to view') ?>
                 </pre>
             </td>
         </tr>
@@ -35,7 +36,9 @@ $tree = $viewModel->getTree();
 <script type="text/x-magento-init">
     {
         "*": {
-            "log-view" : {}
+            "content-view" : {
+                "baseUrl": "<?= $this->getUrl('logs/logs/view') ?>"
+            }
         }
     }
 </script>

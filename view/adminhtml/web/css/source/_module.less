@@ -1,9 +1,43 @@
+@max-height: 65vh;
+
 .logs-management {
-    th:first-child {
-        width: 20%;
+    width: 100%;
+    height: 100%;
+
+    .data-grid {
+        width: 100%;
+        height: 100%;
+        table-layout: fixed;
+
+        th:first-child {
+            width: 15%;
+        }
+
+        th:nth-child(2) {
+            width: auto;
+        }
+
+        tr:hover td {
+            background: transparent;
+        }
+
+        td.data-grid-td {
+            vertical-align: top;
+        }
     }
 
-    .data-grid tr:hover td {
-        background: transparent;
+    #log-content {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        max-height: @max-height;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .logs-tree {
+        max-height: @max-height;
+        overflow-y: auto;
     }
 }

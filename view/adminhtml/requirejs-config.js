@@ -1,10 +1,10 @@
 var config = {
     paths: {
         'logs-tree': 'NetBytes_LogsExplorer/js/logs-tree',
-        'log-view': 'NetBytes_LogsExplorer/js/log-view'
+        'content-view': 'NetBytes_LogsExplorer/js/content-view'
     },
     shim: {
-        'log-view': {
+        'content-view': {
             deps: ['logs-tree']
         }
     }
