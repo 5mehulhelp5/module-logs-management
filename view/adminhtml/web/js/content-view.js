@@ -15,8 +15,7 @@ define([
                 },
                 showLoader: true,
                 success: function (response) {
-                    const logWrapper = $('#log-content');
-                    logWrapper.empty().append(response);
+                    $('#log-content').empty().append(response.content);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.error($.mage.__('Error while loading: '), textStatus, errorThrown);
