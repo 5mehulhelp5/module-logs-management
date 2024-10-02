@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace NetBytes\LogsExplorer\Controller\Adminhtml\Logs;
 
-use Exception;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
+use Magento\Framework\Exception\FileSystemException;
 use NetBytes\LogsExplorer\Service\ContentReaderInterface;
 
 class View extends Action implements HttpGetActionInterface
@@ -33,6 +33,7 @@ class View extends Action implements HttpGetActionInterface
     {
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
         $path = $this->_request->getParam('path');
+
         try {
             $content = $this->contentReader->read($path);
             $resultJson->setData([
@@ -40,7 +41,7 @@ class View extends Action implements HttpGetActionInterface
                 'message' => null,
                 'content' => $content
             ]);
-        } catch (Exception $e) {
+        } catch (FileSystemException $e) {
             $resultJson->setData([
                 'error' => true,
                 'message' => $e->getMessage(),
