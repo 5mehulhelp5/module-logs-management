@@ -12,8 +12,25 @@ use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use NetBytes\LogsManagement\Helper\TreeBuilder;
 
-readonly class LogsTree implements ArgumentInterface
+class LogsTree implements ArgumentInterface
 {
+    /**
+     * @var DirectoryList
+     */
+    private DirectoryList $directoryList;
+    /**
+     * @var File
+     */
+    private File $fileIo;
+    /**
+     * @var TreeBuilder
+     */
+    private TreeBuilder $treeBuilder;
+    /**
+     * @var SerializerInterface
+     */
+    private SerializerInterface $serializer;
+
     /**
      * @param DirectoryList $directoryList
      * @param File $fileIo
@@ -21,11 +38,15 @@ readonly class LogsTree implements ArgumentInterface
      * @param SerializerInterface $serializer
      */
     public function __construct(
-        private DirectoryList $directoryList,
-        private File $fileIo,
-        private TreeBuilder $treeBuilder,
-        private SerializerInterface $serializer
+        DirectoryList $directoryList,
+        File $fileIo,
+        TreeBuilder $treeBuilder,
+        SerializerInterface $serializer
     ) {
+        $this->serializer = $serializer;
+        $this->treeBuilder = $treeBuilder;
+        $this->fileIo = $fileIo;
+        $this->directoryList = $directoryList;
     }
 
     /**
@@ -38,7 +59,7 @@ readonly class LogsTree implements ArgumentInterface
         $tree = [];
         try {
             $tree = $this->treeBuilder->buildTree($this->getItems(), TreeBuilder::ROOT_ID);
-        } catch (LocalizedException) {
+        } catch (LocalizedException $e) {
             return $this->serializer->serialize($tree);
         }
 

@@ -12,18 +12,21 @@ class LinesNumber extends Value
     /**
      * Validate lines number
      *
-     * @return void
+     * @return LinesNumber
      * @throws LocalizedException
      */
-    public function beforeSave(): void
+    public function beforeSave(): LinesNumber
     {
         $value = $this->getValue();
 
         if ($value <= 0) {
+            // phpcs:ignore PHPStan.UnusedMethodCall
             $field = $this->getFieldConfig();
             $label = $field && is_array($field) ? $field['label'] : 'value';
             $msg = __('Invalid %1. The value must be greater than 0.', $label);
             throw new LocalizedException($msg);
         }
+
+        return $this;
     }
 }

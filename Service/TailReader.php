@@ -6,24 +6,57 @@ namespace NetBytes\LogsManagement\Service;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\Shell;
 use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\Driver\File;
+use Magento\Framework\Filesystem\Driver\File as FileDriver;
+use Magento\Framework\Filesystem\Io\File;
 
 class TailReader implements ContentReaderInterface
 {
-    const string LINES_NUMBER_CONFIG = 'system/logs_management/lines_number';
+    public const LINES_NUMBER_CONFIG = 'system/logs_management/lines_number';
+
+    /**
+     * @var Filesystem
+     */
+    private Filesystem $filesystem;
+    /**
+     * @var File
+     */
+    private File $file;
+    /**
+     * @var FileDriver
+     */
+    private FileDriver $fileDriver;
+    /**
+     * @var ScopeConfigInterface
+     */
+    private ScopeConfigInterface $config;
+    /**
+     * @var Shell
+     */
+    private Shell $shell;
 
     /**
      * @param Filesystem $filesystem
-     * @param File $fileDriver
+     * @param File $file
+     * @param FileDriver $fileDriver
      * @param ScopeConfigInterface $config
+     * @param Shell $shell
      */
     public function __construct(
-        private readonly Filesystem $filesystem,
-        private readonly File $fileDriver,
-        private readonly ScopeConfigInterface $config
+        Filesystem $filesystem,
+        File $file,
+        FileDriver $fileDriver,
+        ScopeConfigInterface $config,
+        Shell $shell
     ) {
+        $this->config = $config;
+        $this->fileDriver = $fileDriver;
+        $this->filesystem = $filesystem;
+        $this->file = $file;
+        $this->shell = $shell;
     }
 
     /**
@@ -32,7 +65,7 @@ class TailReader implements ContentReaderInterface
      * @param string $path
      *
      * @return string
-     * @throws FileSystemException
+     * @throws FileSystemException|LocalizedException
      */
     public function read(string $path): string
     {
@@ -48,8 +81,8 @@ class TailReader implements ContentReaderInterface
             throw new FileSystemException(__('The file was not found.'));
         }
 
-        $command = sprintf('tail -n %d %s', $this->getNumberOfLines(), escapeshellarg($filePath));
-        $output = shell_exec($command);
+        $arguments = ['-n', $this->getNumberOfLines(), $filePath];
+        $output = $this->shell->execute('tail %s %s %s', $arguments);
 
         if (!is_string($output)) {
             throw new FileSystemException(__('The file could not be read.'));
@@ -67,9 +100,9 @@ class TailReader implements ContentReaderInterface
      */
     protected function validateExtension(string $path): bool
     {
-        $fileExtension = pathinfo($path, PATHINFO_EXTENSION);
+        $pathInfo = $this->file->getPathInfo($path);
 
-        if ($fileExtension === ContentReaderInterface::FILE_EXTENSION) {
+        if (isset($pathInfo['extension']) && $pathInfo['extension'] === ContentReaderInterface::FILE_EXTENSION) {
             return true;
         }
 
@@ -93,10 +126,10 @@ class TailReader implements ContentReaderInterface
     /**
      * Get number of lines to read
      *
-     * @return int
+     * @return string
      */
-    protected function getNumberOfLines(): int
+    protected function getNumberOfLines(): string
     {
-        return (int)$this->config->getValue(self::LINES_NUMBER_CONFIG);
+        return $this->config->getValue(self::LINES_NUMBER_CONFIG);
     }
 }

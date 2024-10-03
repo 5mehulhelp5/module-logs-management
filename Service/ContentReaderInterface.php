@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace NetBytes\LogsManagement\Service;
 
 use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\Exception\LocalizedException;
 
 interface ContentReaderInterface
 {
-    const string FILE_EXTENSION = 'log';
+    public const FILE_EXTENSION = 'log';
 
     /**
      * Read the content of a file
@@ -16,7 +17,7 @@ interface ContentReaderInterface
      * @param string $path
      *
      * @return string
-     * @throws FileSystemException
+     * @throws FileSystemException|LocalizedException
      */
     public function read(string $path): string;
 }

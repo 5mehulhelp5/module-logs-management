@@ -4,31 +4,45 @@ declare(strict_types=1);
 
 namespace NetBytes\LogsManagement\Helper;
 
+use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Filesystem\Driver\File as FileDriver;
 use Magento\Framework\Filesystem\Io\File;
 use NetBytes\LogsManagement\Service\ContentReaderInterface;
 
 class TreeBuilder
 {
-    public const string ROOT_ID = '#';
-    protected const int FILE_MODE = 0;
-    protected const int DIR_MODE = 1;
+    public const ROOT_ID = '#';
+    protected const FILE_MODE = 0;
+    protected const DIR_MODE = 1;
 
     /**
      * @var int Counter to generate unique IDs
      */
     private int $counter = 1;
-
     /**
      * @var array Variable to store the tree
      */
     private array $tree = [];
+    /**
+     * @var File
+     */
+    private File $fileIo;
+    /**
+     * @var FileDriver
+     */
+    private FileDriver $fileDriver;
 
     /**
      * @param File $fileIo
+     * @param FileDriver $fileDriver
      */
-    public function __construct(private readonly File $fileIo)
-    {
+    public function __construct(
+        File $fileIo,
+        FileDriver $fileDriver
+    ) {
+        $this->fileIo = $fileIo;
+        $this->fileDriver = $fileDriver;
     }
 
     /**
@@ -94,7 +108,8 @@ class TreeBuilder
      *
      * @return void
      */
-    protected function addToTree(string $text, string $parentId, int $iconMode, string $relativePath): void {
+    protected function addToTree(string $text, string $parentId, int $iconMode, string $relativePath): void
+    {
         $node = [
             'id'     => $this->counter,
             'parent' => $parentId,
@@ -133,9 +148,10 @@ class TreeBuilder
      * @param array $item
      *
      * @return bool
+     * @throws FileSystemException
      */
     private function isDirectory(array $item): bool
     {
-        return isset($item['id']) && is_dir($item['id']);
+        return isset($item['id']) && $this->fileDriver->isDirectory($item['id']);
     }
 }
