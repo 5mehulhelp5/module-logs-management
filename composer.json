@@ -2,17 +2,27 @@
     "name": "netbytes/module-logs-management",
     "description": "A module for Magento 2 that allows you to view Magento logs in the admin panel.",
     "type": "magento2-module",
-    "license": [
-        "OSL-3.0",
-        "AFL-3.0"
-    ],
-    "config": {
-        "sort-packages": true
-    },
     "version": "1.0.0",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jakub Pałys",
+            "email": "quba546546@gmail.com"
+        }
+    ],
+    "keywords": [
+        "magento 2",
+        "magento 2 logs",
+        "magento logs management",
+        "logs",
+        "logs view",
+        "logs management",
+        "logs display"
+    ],
     "require": {
         "php": "~8.1.0||~8.2.0||~8.3.0",
-        "magento/framework": "103.0.*"
+        "magento/framework": "103.0.*",
+        "magento/module-backend": "102.0.*"
     },
     "autoload": {
         "files": [
