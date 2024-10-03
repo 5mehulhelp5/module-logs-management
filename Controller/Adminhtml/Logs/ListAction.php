@@ -9,6 +9,8 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 
 class ListAction extends Action implements HttpGetActionInterface
 {
+    const string ADMIN_RESOURCE = 'NetBytes_LogsManagement::index';
+
     /**
      * @ingeritdoc
      */

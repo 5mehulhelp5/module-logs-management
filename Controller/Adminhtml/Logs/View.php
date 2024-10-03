@@ -14,6 +14,8 @@ use NetBytes\LogsManagement\Service\ContentReaderInterface;
 
 class View extends Action implements HttpGetActionInterface
 {
+    const string ADMIN_RESOURCE = 'NetBytes_LogsManagement::index';
+
     /**
      * @param Context $context
      * @param ContentReaderInterface $contentReader
