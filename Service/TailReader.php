@@ -27,6 +27,8 @@ class TailReader implements ContentReaderInterface
     }
 
     /**
+     * Read the content of a file
+     *
      * @param string $path
      *
      * @return string
