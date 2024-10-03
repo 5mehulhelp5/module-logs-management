@@ -20,9 +20,9 @@ class TailReader implements ContentReaderInterface
      * @param ScopeConfigInterface $config
      */
     public function __construct(
-        private Filesystem $filesystem,
-        private File $fileDriver,
-        private ScopeConfigInterface $config
+        private readonly Filesystem $filesystem,
+        private readonly File $fileDriver,
+        private readonly ScopeConfigInterface $config
     ) {
     }
 
