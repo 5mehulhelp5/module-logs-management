@@ -82,13 +82,8 @@ class TailReader implements ContentReaderInterface
         }
 
         $arguments = ['-n', $this->getNumberOfLines(), $filePath];
-        $output = $this->shell->execute('tail %s %s %s', $arguments);
 
-        if (!is_string($output)) {
-            throw new FileSystemException(__('The file could not be read.'));
-        }
-
-        return $output;
+        return $this->shell->execute('tail %s %s %s', $arguments);
     }
 
     /**
