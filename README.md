@@ -55,7 +55,7 @@ Once the module is installed and configured:
 
 ## Support
 
-If you encounter any issues or need help, please open an issue on the GitHub repository: GitHub Issues.
+If you encounter any issues or need help, please open an issue on the GitHub repository: [GitHub Issues](https://github.com/quba546/module-logs-management/issues).
 
 ## License
 
