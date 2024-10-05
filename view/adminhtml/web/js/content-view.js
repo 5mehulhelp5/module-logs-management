@@ -5,35 +5,71 @@ define([
     'use strict';
 
     return function (config) {
-        function handleClick(item) {
+
+        /**
+         * Function to handle error state
+         *
+         * @param {object} content
+         * @param {object} note
+         * @param {string} message
+         */
+        function handleErrorState(content, note, message)
+        {
+            console.log(typeof content);
+            content.empty().hide();
+            note.show().children('span').empty().append(message);
+        }
+
+        /**
+         * Function to handle success state
+         *
+         * @param {object} content
+         * @param {object} note
+         * @param {string} data
+         */
+        function handleSuccessState(content, note, data)
+        {
+            note.hide().children('span').empty();
+            content.empty().append(data).show();
+        }
+
+        /**
+         * Function to handle click event on a file item of the directory tree
+         *
+         * @param {object} item
+         */
+        function handleClick(item)
+        {
+            const path = $(item).data('item-path');
+            const note = $('div.note');
+            const content = $('#log-content');
+
             $.ajax({
                 url: config.baseUrl,
                 type: 'GET',
                 dataType: 'json',
-                data: {
-                    path: $(item).data('item-path')
-                },
+                data: { path: path },
                 showLoader: true,
-                success: function (response) {
-                    const note = $('div.note');
-                    const content = $('#log-content');
+                success(response) {
+                    const message = response.message || '';
 
                     if (response.error) {
-                        content.empty().css('display', 'none');
-                        note.css('display', 'flex').children('span').empty().append(response.message);
+                        handleErrorState(content, note, message);
                     } else {
-                        note.css('display', 'none').children('span').empty();
-                        content.empty().append(response.content).css('display', 'block');
+                        handleSuccessState(content, note, response.content);
                     }
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
+                error(jqXHR, textStatus, errorThrown) {
                     console.error($.mage.__('Error while loading: '), textStatus, errorThrown);
                 }
             });
         }
 
-        // Function to check if there are any file nodes in the category tree
-        function checkTreeLoading() {
+        /**
+         * Function to check if there are any file nodes in the category tree
+         */
+        function checkTreeLoading()
+        {
             const fileNodes = $('[data-item-type="file"]');
             if (fileNodes.length > 0) {
                 observer.disconnect();
