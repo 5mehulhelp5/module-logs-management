@@ -1,5 +1,5 @@
 {
-    "name": "netbytes/module-logs-management",
+    "name": "net-bytes/module-logs-management",
     "description": "A module for Magento 2 that allows you to view Magento logs in the admin panel.",
     "type": "magento2-module",
     "version": "1.0.0",
@@ -13,6 +13,9 @@
     "keywords": [
         "magento 2",
         "magento 2 logs",
+        "magento2-extension",
+        "magento2-module",
+        "magento2-plugin",
         "magento logs management",
         "logs",
         "logs view",
