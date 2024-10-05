@@ -15,6 +15,7 @@ class TreeBuilder
     public const ROOT_ID = '#';
     protected const FILE_MODE = 0;
     protected const DIR_MODE = 1;
+    protected const NEW_LINE_CHAR = PHP_EOL;
 
     /**
      * @var int Counter to generate unique IDs
@@ -79,7 +80,12 @@ class TreeBuilder
      */
     protected function processFileItem(array $item, string $parentId, string $relativePath): void
     {
-        $this->addToTree($item['text'], $parentId, self::FILE_MODE, $relativePath);
+        $metadata = [
+            'mod_date' => $item['mod_date'],
+            'size' => $item['size']
+        ];
+
+        $this->addToTree($item['text'], $parentId, self::FILE_MODE, $relativePath, $metadata);
     }
 
     /**
@@ -105,22 +111,69 @@ class TreeBuilder
      * @param string $parentId
      * @param int $iconMode
      * @param string $relativePath
+     * @param array $metadata
      *
      * @return void
      */
-    protected function addToTree(string $text, string $parentId, int $iconMode, string $relativePath): void
-    {
+    protected function addToTree(
+        string $text,
+        string $parentId,
+        int $iconMode,
+        string $relativePath,
+        array $metadata = []
+    ): void {
         $node = [
             'id'     => $this->counter,
             'parent' => $parentId,
             'text'   => $text,
             'icon'   => $iconMode ? 'jstree-folder' : 'jstree-file',
             'state'  => ['opened' => $iconMode],
-            'li_attr' => ['data-item-type' => $iconMode ? 'dir' : 'file', 'data-item-path' => $relativePath],
+            'li_attr' => [
+                'data-item-type' => $iconMode ? 'dir' : 'file',
+                'data-item-path' => $relativePath,
+                'title' => !$iconMode ? $this->getFormattedMetadata($metadata) : ''
+            ]
         ];
 
         $this->tree[] = $node;
         $this->counter++;
+    }
+
+    /**
+     * @param array $metadata
+     *
+     * @return string
+     */
+    private function getFormattedMetadata(array $metadata): string
+    {
+        if (empty($metadata) || !isset($metadata['mod_date'], $metadata['size'])) {
+            return '';
+        }
+
+        return implode(self::NEW_LINE_CHAR, [
+            __('Last modified: %1', $metadata['mod_date']),
+            __('File size: %1', $this->getFormattedBytes($metadata['size']))
+        ]);
+    }
+
+    /**
+     * @param int $bytes
+     *
+     * @return string
+     */
+    private function getFormattedBytes(int $bytes): string
+    {
+        if ($bytes >= 1073741824) {
+            $size = number_format($bytes / 1073741824, 2) . ' GB';
+        } elseif ($bytes >= 1048576) {
+            $size = number_format($bytes / 1048576, 2) . ' MB';
+        } elseif ($bytes >= 1024) {
+            $size = number_format($bytes / 1024, 2) . ' KB';
+        } else {
+            $size = $bytes . ' B';
+        }
+
+        return $size;
     }
 
     /**
