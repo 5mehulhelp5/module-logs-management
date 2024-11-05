@@ -15,35 +15,45 @@ class TreeBuilder
     public const ROOT_ID = '#';
     protected const FILE_MODE = 0;
     protected const DIR_MODE = 1;
-    protected const NEW_LINE_CHAR = PHP_EOL;
 
     /**
      * @var int Counter to generate unique IDs
      */
     private int $counter = 1;
+
     /**
      * @var array Variable to store the tree
      */
     private array $tree = [];
+
     /**
      * @var File
      */
     private File $fileIo;
+
     /**
      * @var FileDriver
      */
     private FileDriver $fileDriver;
 
     /**
+     * @var FileMetadataBuilder
+     */
+    private FileMetadataBuilder $metadataBuilder;
+
+    /**
      * @param File $fileIo
      * @param FileDriver $fileDriver
+     * @param FileMetadataBuilder $metadataBuilder
      */
     public function __construct(
         File $fileIo,
-        FileDriver $fileDriver
+        FileDriver $fileDriver,
+        FileMetadataBuilder $metadataBuilder
     ) {
         $this->fileIo = $fileIo;
         $this->fileDriver = $fileDriver;
+        $this->metadataBuilder = $metadataBuilder;
     }
 
     /**
@@ -54,6 +64,7 @@ class TreeBuilder
      * @param string $path
      *
      * @return array
+     * @throws FileSystemException
      * @throws LocalizedException
      */
     public function buildTree(array $items, string $parentId, string $path = ''): array
@@ -131,49 +142,12 @@ class TreeBuilder
             'li_attr' => [
                 'data-item-type' => $iconMode ? 'dir' : 'file',
                 'data-item-path' => $relativePath,
-                'title' => !$iconMode ? $this->getFormattedMetadata($metadata) : ''
+                'title' => !$iconMode ? $this->metadataBuilder->getFormattedMetadata($metadata) : ''
             ]
         ];
 
         $this->tree[] = $node;
         $this->counter++;
-    }
-
-    /**
-     * @param array $metadata
-     *
-     * @return string
-     */
-    private function getFormattedMetadata(array $metadata): string
-    {
-        if (empty($metadata) || !isset($metadata['mod_date'], $metadata['size'])) {
-            return '';
-        }
-
-        return implode(self::NEW_LINE_CHAR, [
-            __('Last modified: %1', $metadata['mod_date']),
-            __('File size: %1', $this->getFormattedBytes($metadata['size']))
-        ]);
-    }
-
-    /**
-     * @param int $bytes
-     *
-     * @return string
-     */
-    private function getFormattedBytes(int $bytes): string
-    {
-        if ($bytes >= 1073741824) {
-            $size = number_format($bytes / 1073741824, 2) . ' GB';
-        } elseif ($bytes >= 1048576) {
-            $size = number_format($bytes / 1048576, 2) . ' MB';
-        } elseif ($bytes >= 1024) {
-            $size = number_format($bytes / 1024, 2) . ' KB';
-        } else {
-            $size = $bytes . ' B';
-        }
-
-        return $size;
     }
 
     /**

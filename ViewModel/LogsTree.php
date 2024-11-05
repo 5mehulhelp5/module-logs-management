@@ -59,7 +59,7 @@ class LogsTree implements ArgumentInterface
         $tree = [];
         try {
             $tree = $this->treeBuilder->buildTree($this->getItems(), TreeBuilder::ROOT_ID);
-        } catch (LocalizedException $e) {
+        } catch (LocalizedException|FileSystemException $e) {
             return $this->serializer->serialize($tree);
         }
 

@@ -52,10 +52,10 @@ class TailReader implements ContentReaderInterface
         ScopeConfigInterface $config,
         Shell $shell
     ) {
-        $this->config = $config;
-        $this->fileDriver = $fileDriver;
         $this->filesystem = $filesystem;
         $this->file = $file;
+        $this->fileDriver = $fileDriver;
+        $this->config = $config;
         $this->shell = $shell;
     }
 
