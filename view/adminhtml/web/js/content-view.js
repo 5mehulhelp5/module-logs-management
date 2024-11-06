@@ -15,7 +15,6 @@ define([
          */
         function handleErrorState(content, note, message)
         {
-            console.log(typeof content);
             content.empty().hide();
             note.show().children('span').empty().append(message);
         }

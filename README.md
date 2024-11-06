@@ -8,7 +8,7 @@ The module lets you configure the number of log file lines to display, starting 
 
 ## Compatibility
 
-This module is compatible with Magento 2.4.x.
+This module is compatible with Magento 2.4.4 or later.
 
 ## Features
 
