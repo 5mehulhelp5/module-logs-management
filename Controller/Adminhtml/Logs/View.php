@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NetBytes\LogsManagement\Controller\Adminhtml\Logs;
+namespace QubaByte\LogsManagement\Controller\Adminhtml\Logs;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -12,11 +12,11 @@ use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\ResultInterface;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
-use NetBytes\LogsManagement\Service\ContentReaderInterface;
+use QubaByte\LogsManagement\Service\ContentReaderInterface;
 
 class View extends Action implements HttpGetActionInterface
 {
-    public const ADMIN_RESOURCE = 'NetBytes_LogsManagement::index';
+    public const ADMIN_RESOURCE = 'QubaByte_LogsManagement::index';
 
     /**
      * @param Context $context

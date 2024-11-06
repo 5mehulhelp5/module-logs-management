@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NetBytes\LogsManagement\Controller\Adminhtml\Logs;
+namespace QubaByte\LogsManagement\Controller\Adminhtml\Logs;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -12,7 +12,7 @@ use Magento\Framework\View\Result\PageFactory;
 
 class ListAction extends Action implements HttpGetActionInterface
 {
-    public const ADMIN_RESOURCE = 'NetBytes_LogsManagement::index';
+    public const ADMIN_RESOURCE = 'QubaByte_LogsManagement::index';
 
     /**
      * @param Context $context
@@ -32,7 +32,7 @@ class ListAction extends Action implements HttpGetActionInterface
     {
         /** @var Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('NetBytes_LogsManagement::system_index');
+        $resultPage->setActiveMenu('QubaByte_LogsManagement::system_index');
         $resultPage->addBreadcrumb(__('Logs Management'), __('Logs Management'));
         $resultPage->getConfig()->getTitle()->prepend(__('Logs Management'));
 

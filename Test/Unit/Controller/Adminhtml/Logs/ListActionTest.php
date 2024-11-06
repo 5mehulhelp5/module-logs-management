@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace NetBytes\LogsManagement\Test\Unit\Controller\Adminhtml\Logs;
+namespace QubaByte\LogsManagement\Test\Unit\Controller\Adminhtml\Logs;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Page;
 use Magento\Framework\View\Page\Config;
 use Magento\Framework\View\Page\Title;
 use Magento\Framework\View\Result\PageFactory;
-use NetBytes\LogsManagement\Controller\Adminhtml\Logs\ListAction;
+use QubaByte\LogsManagement\Controller\Adminhtml\Logs\ListAction;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -62,7 +62,7 @@ class ListActionTest extends TestCase
 
         $this->pageMock->expects($this->once())
             ->method('setActiveMenu')
-            ->with('NetBytes_LogsManagement::system_index')
+            ->with('QubaByte_LogsManagement::system_index')
             ->willReturnSelf();
 
         $this->pageMock->expects($this->once())

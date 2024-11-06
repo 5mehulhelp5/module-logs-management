@@ -1,5 +1,5 @@
 {
-    "name": "net-bytes/module-logs-management",
+    "name": "qubabyte/module-logs-management",
     "description": "A module for Magento 2 that allows you to view Magento logs in the admin panel.",
     "type": "magento2-module",
     "version": "1.0.0",
@@ -32,7 +32,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "NetBytes\\LogsManagement\\": ""
+            "QubaByte\\LogsManagement\\": ""
         }
     }
 }

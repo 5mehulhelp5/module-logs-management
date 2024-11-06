@@ -1,7 +1,7 @@
 var config = {
     paths: {
-        'logs-tree': 'NetBytes_LogsManagement/js/logs-tree',
-        'content-view': 'NetBytes_LogsManagement/js/content-view'
+        'logs-tree': 'QubaByte_LogsManagement/js/logs-tree',
+        'content-view': 'QubaByte_LogsManagement/js/content-view'
     },
     shim: {
         'content-view': {

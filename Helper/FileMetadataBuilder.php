@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NetBytes\LogsManagement\Helper;
+namespace QubaByte\LogsManagement\Helper;
 
 class FileMetadataBuilder
 {

@@ -25,12 +25,12 @@ This module is compatible with Magento 2.4.4 or later.
 2. Run the following command to install the module via Composer:
 
    ```bash
-   composer require netbytes/module-logs-management
+   composer require qubabyte/module-logs-management
    ```
 3. After the installation, enable the module and clear caches:
 
    ```bash
-   bin/magento module:enable NetBytes_LogsManagement
+   bin/magento module:enable QubaByte_LogsManagement
    bin/magento setup:upgrade
    bin/magento cache:clean
    ```

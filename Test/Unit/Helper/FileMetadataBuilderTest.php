@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NetBytes\LogsManagement\Test\Unit\Helper;
+namespace QubaByte\LogsManagement\Test\Unit\Helper;
 
-use NetBytes\LogsManagement\Helper\FileMetadataBuilder;
+use QubaByte\LogsManagement\Helper\FileMetadataBuilder;
 use PHPUnit\Framework\TestCase;
 
 class FileMetadataBuilderTest extends TestCase

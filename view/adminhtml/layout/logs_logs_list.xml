@@ -4,9 +4,9 @@
     <update handle="indexer_indexer_list_grid"/>
     <body>
         <referenceContainer name="content">
-            <block name="adminhtml.logs.list" template="NetBytes_LogsManagement::list.phtml">
+            <block name="adminhtml.logs.list" template="QubaByte_LogsManagement::list.phtml">
                 <arguments>
-                    <argument name="view_model" xsi:type="object">NetBytes\LogsManagement\ViewModel\LogsTree</argument>
+                    <argument name="view_model" xsi:type="object">QubaByte\LogsManagement\ViewModel\LogsTree</argument>
                 </arguments>
             </block>
         </referenceContainer>
