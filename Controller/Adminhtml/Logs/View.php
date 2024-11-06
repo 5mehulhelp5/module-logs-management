@@ -19,21 +19,6 @@ class View extends Action implements HttpGetActionInterface
     public const ADMIN_RESOURCE = 'NetBytes_LogsManagement::index';
 
     /**
-     * @var JsonFactory
-     */
-    private JsonFactory $resultJsonFactory;
-
-    /**
-     * @var RequestInterface
-     */
-    private RequestInterface $request;
-
-    /**
-     * @var ContentReaderInterface
-     */
-    private ContentReaderInterface $contentReader;
-
-    /**
      * @param Context $context
      * @param JsonFactory $resultJsonFactory
      * @param RequestInterface $request
@@ -41,14 +26,11 @@ class View extends Action implements HttpGetActionInterface
      */
     public function __construct(
         Context $context,
-        JsonFactory $resultJsonFactory,
-        RequestInterface $request,
-        ContentReaderInterface $contentReader
+        private readonly JsonFactory $resultJsonFactory,
+        private readonly RequestInterface $request,
+        private readonly ContentReaderInterface $contentReader
     ) {
         parent::__construct($context);
-        $this->resultJsonFactory = $resultJsonFactory;
-        $this->contentReader = $contentReader;
-        $this->request = $request;
     }
 
     /**

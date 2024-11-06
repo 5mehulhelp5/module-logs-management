@@ -18,27 +18,6 @@ class TailReader implements ContentReaderInterface
     public const LINES_NUMBER_CONFIG = 'system/logs_management/lines_number';
 
     /**
-     * @var Filesystem
-     */
-    private Filesystem $filesystem;
-    /**
-     * @var File
-     */
-    private File $file;
-    /**
-     * @var FileDriver
-     */
-    private FileDriver $fileDriver;
-    /**
-     * @var ScopeConfigInterface
-     */
-    private ScopeConfigInterface $config;
-    /**
-     * @var Shell
-     */
-    private Shell $shell;
-
-    /**
      * @param Filesystem $filesystem
      * @param File $file
      * @param FileDriver $fileDriver
@@ -46,17 +25,12 @@ class TailReader implements ContentReaderInterface
      * @param Shell $shell
      */
     public function __construct(
-        Filesystem $filesystem,
-        File $file,
-        FileDriver $fileDriver,
-        ScopeConfigInterface $config,
-        Shell $shell
+        private readonly Filesystem $filesystem,
+        private readonly File $file,
+        private readonly FileDriver $fileDriver,
+        private readonly ScopeConfigInterface $config,
+        private readonly Shell $shell
     ) {
-        $this->filesystem = $filesystem;
-        $this->file = $file;
-        $this->fileDriver = $fileDriver;
-        $this->config = $config;
-        $this->shell = $shell;
     }
 
     /**

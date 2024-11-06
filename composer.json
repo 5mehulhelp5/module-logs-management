@@ -23,7 +23,7 @@
         "logs display"
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": "^8.1",
         "magento/framework": "103.0.*",
         "magento/module-backend": "102.0.*"
     },

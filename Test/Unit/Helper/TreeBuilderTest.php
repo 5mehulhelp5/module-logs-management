@@ -90,14 +90,11 @@ class TreeBuilderTest extends TestCase
             ->method('getFormattedMetadata')
             ->willReturnCallback(function () use (&$userCallCount) {
                 $userCallCount++;
-                switch ($userCallCount) {
-                    case 1:
-                        return 'Last modified: 2020-01-01 00:00:00\\nFile size: 23.26 MB';
-                    case 2:
-                        return 'Last modified: 2020-01-01 00:00:00\\nFile size: 51.64 KB';
-                    default:
-                        return '';
-                }
+                return match ($userCallCount) {
+                    1 => 'Last modified: 2020-01-01 00:00:00\\nFile size: 23.26 MB',
+                    2 => 'Last modified: 2020-01-01 00:00:00\\nFile size: 51.64 KB',
+                    default => '',
+                };
             });
 
         $this->fileDriverMock->expects($this->once())

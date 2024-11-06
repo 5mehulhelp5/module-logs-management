@@ -15,38 +15,17 @@ use NetBytes\LogsManagement\Helper\TreeBuilder;
 class LogsTree implements ArgumentInterface
 {
     /**
-     * @var DirectoryList
-     */
-    private DirectoryList $directoryList;
-    /**
-     * @var File
-     */
-    private File $fileIo;
-    /**
-     * @var TreeBuilder
-     */
-    private TreeBuilder $treeBuilder;
-    /**
-     * @var SerializerInterface
-     */
-    private SerializerInterface $serializer;
-
-    /**
      * @param DirectoryList $directoryList
      * @param File $fileIo
      * @param TreeBuilder $treeBuilder
      * @param SerializerInterface $serializer
      */
     public function __construct(
-        DirectoryList $directoryList,
-        File $fileIo,
-        TreeBuilder $treeBuilder,
-        SerializerInterface $serializer
+        private readonly DirectoryList $directoryList,
+        private readonly File $fileIo,
+        private readonly TreeBuilder $treeBuilder,
+        private readonly SerializerInterface $serializer
     ) {
-        $this->serializer = $serializer;
-        $this->treeBuilder = $treeBuilder;
-        $this->fileIo = $fileIo;
-        $this->directoryList = $directoryList;
     }
 
     /**

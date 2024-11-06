@@ -27,33 +27,15 @@ class TreeBuilder
     private array $tree = [];
 
     /**
-     * @var File
-     */
-    private File $fileIo;
-
-    /**
-     * @var FileDriver
-     */
-    private FileDriver $fileDriver;
-
-    /**
-     * @var FileMetadataBuilder
-     */
-    private FileMetadataBuilder $metadataBuilder;
-
-    /**
      * @param File $fileIo
      * @param FileDriver $fileDriver
      * @param FileMetadataBuilder $metadataBuilder
      */
     public function __construct(
-        File $fileIo,
-        FileDriver $fileDriver,
-        FileMetadataBuilder $metadataBuilder
+        private readonly File $fileIo,
+        private readonly FileDriver $fileDriver,
+        private readonly FileMetadataBuilder $metadataBuilder
     ) {
-        $this->fileIo = $fileIo;
-        $this->fileDriver = $fileDriver;
-        $this->metadataBuilder = $metadataBuilder;
     }
 
     /**
