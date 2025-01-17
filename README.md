@@ -43,6 +43,8 @@ To configure the module:
 2. Navigate to Stores > Configuration > Advanced > System > Logs Management.
 3. Set the number of lines to be displayed for each log file (default: 5000 lines).
 
+![Zrzut ekranu 2025-01-17 203555](https://github.com/user-attachments/assets/3933a369-088c-4168-8849-50fb9c512ad5)
+
 ⚠️ **Important:** Do not set too high a number of lines, as this may cause performance problems.
 
 ## Usage
@@ -52,6 +54,8 @@ Once the module is installed and configured:
 1. In the Magento admin panel, go to System > Tools > Log Management.
 2. Choose the log file you wish to view from the available options (e.g., `system.log`, `exception.log`).
 3. The module will display the most recent log entries based on the configured number of lines.
+
+![Zrzut ekranu 2025-01-17 203518](https://github.com/user-attachments/assets/34f9abc4-5edb-4346-a33e-5c2c0d5e01f0)
 
 ## Support
 
