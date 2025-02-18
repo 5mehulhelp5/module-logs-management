@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace QubaByte\LogsManagement\Service;
+namespace Cloudflex\LogsManagement\Service;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;

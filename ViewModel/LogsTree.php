@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace QubaByte\LogsManagement\ViewModel;
+namespace Cloudflex\LogsManagement\ViewModel;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\FileSystemException;
@@ -10,7 +10,7 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-use QubaByte\LogsManagement\Helper\TreeBuilder;
+use Cloudflex\LogsManagement\Helper\TreeBuilder;
 
 class LogsTree implements ArgumentInterface
 {

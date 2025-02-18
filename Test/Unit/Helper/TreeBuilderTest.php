@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace QubaByte\LogsManagement\Test\Unit\Helper;
+namespace Cloudflex\LogsManagement\Test\Unit\Helper;
 
 use Magento\Framework\Exception\FileSystemException;
 use \Magento\Framework\Filesystem\Driver\File as FileDriver;
 use Magento\Framework\Filesystem\Io\File;
-use QubaByte\LogsManagement\Helper\FileMetadataBuilder;
-use QubaByte\LogsManagement\Helper\TreeBuilder;
+use Cloudflex\LogsManagement\Helper\FileMetadataBuilder;
+use Cloudflex\LogsManagement\Helper\TreeBuilder;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

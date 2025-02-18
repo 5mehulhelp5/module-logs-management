@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace QubaByte\LogsManagement\Helper;
+namespace Cloudflex\LogsManagement\Helper;
 
 class FileMetadataBuilder
 {

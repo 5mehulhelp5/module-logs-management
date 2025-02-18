@@ -9,7 +9,7 @@
                     <label>Number of lines</label>
                     <comment>This field will display the N last lines from the log file.</comment>
                     <tooltip>Do not enter a value greater than 20000 due to potential performance issues.</tooltip>
-                    <backend_model>QubaByte\LogsManagement\Model\Config\Backend\LinesNumber</backend_model>
+                    <backend_model>Cloudflex\LogsManagement\Model\Config\Backend\LinesNumber</backend_model>
                     <validate>required-entry integer</validate>
                 </field>
             </group>

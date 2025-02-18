@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace QubaByte\LogsManagement\Helper;
+namespace Cloudflex\LogsManagement\Helper;
 
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem\Driver\File as FileDriver;
 use Magento\Framework\Filesystem\Io\File;
-use QubaByte\LogsManagement\Service\ContentReaderInterface;
+use Cloudflex\LogsManagement\Service\ContentReaderInterface;
 
 class TreeBuilder
 {

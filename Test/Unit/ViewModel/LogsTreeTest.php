@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace QubaByte\LogsManagement\Test\Unit\ViewModel;
+namespace Cloudflex\LogsManagement\Test\Unit\ViewModel;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem\Io\File;
 use Magento\Framework\Serialize\SerializerInterface;
-use QubaByte\LogsManagement\Helper\TreeBuilder;
-use QubaByte\LogsManagement\ViewModel\LogsTree;
+use Cloudflex\LogsManagement\Helper\TreeBuilder;
+use Cloudflex\LogsManagement\ViewModel\LogsTree;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

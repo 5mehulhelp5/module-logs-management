@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace QubaByte\LogsManagement\Test\Unit\Service;
+namespace Cloudflex\LogsManagement\Test\Unit\Service;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
@@ -12,7 +12,7 @@ use Magento\Framework\Filesystem;
 use Magento\Framework\Filesystem\Directory\ReadInterface;
 use Magento\Framework\Filesystem\Driver\File as FileDriver;
 use Magento\Framework\Filesystem\Io\File;
-use QubaByte\LogsManagement\Service\TailReader;
+use Cloudflex\LogsManagement\Service\TailReader;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

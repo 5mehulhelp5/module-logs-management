@@ -1,7 +1,7 @@
 var config = {
     paths: {
-        'logs-tree': 'QubaByte_LogsManagement/js/logs-tree',
-        'content-view': 'QubaByte_LogsManagement/js/content-view'
+        'logs-tree': 'Cloudflex_LogsManagement/js/logs-tree',
+        'content-view': 'Cloudflex_LogsManagement/js/content-view'
     },
     shim: {
         'content-view': {

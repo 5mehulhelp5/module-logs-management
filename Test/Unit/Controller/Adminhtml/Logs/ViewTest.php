@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace QubaByte\LogsManagement\Test\Unit\Controller\Adminhtml\Logs;
+namespace Cloudflex\LogsManagement\Test\Unit\Controller\Adminhtml\Logs;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\RequestInterface;
@@ -10,8 +10,8 @@ use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Exception\LocalizedException;
-use QubaByte\LogsManagement\Controller\Adminhtml\Logs\View;
-use QubaByte\LogsManagement\Service\ContentReaderInterface;
+use Cloudflex\LogsManagement\Controller\Adminhtml\Logs\View;
+use Cloudflex\LogsManagement\Service\ContentReaderInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 

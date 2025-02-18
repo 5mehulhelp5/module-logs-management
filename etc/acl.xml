@@ -6,7 +6,7 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::system">
                     <resource id="Magento_Backend::tools">
-                        <resource id="QubaByte_LogsManagement::index" title="Logs Management" translate="title" sortOrder="10" />
+                        <resource id="Cloudflex_LogsManagement::index" title="Logs Management" translate="title" sortOrder="10" />
                     </resource>
                 </resource>
             </resource>
