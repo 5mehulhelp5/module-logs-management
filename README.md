@@ -1,4 +1,4 @@
-# Magento 2 Logs Management module
+# Logs Management Module for Magento 2
 
 ## Overview
 
